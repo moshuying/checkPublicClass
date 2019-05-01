@@ -1,6 +1,6 @@
 <?php
-require "./stu/connect/PDOconn.php";
-include "./stu/connect/session.php";
+require "./connect/PDOconn.php";
+include "./connect/session.php";
 $username = isset($_POST['username'])?$_POST['username']:"";
 $password = isset($_POST['password'])?$_POST['password']:"";
 $ip = ($_SERVER["HTTP_VIA"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] : $_SERVER["REMOTE_ADDR"];
@@ -31,7 +31,7 @@ try{
         } 
         if($username[0]=='2'){
             //第一位为2 检查学生账号    
-            $loginSql="SELECT username,password,xingming,xuankeID FROM studentxk WHERE username = ".$username." AND password= ".$password; 
+            $loginSql="SELECT username,password,xingming,xuankeID FROM studentxk WHERE username = ".$username." AND password= '".$password."'"; 
             //执行sql语句
             $result=$pdo->query($loginSql);
             $result=$result->fetch();

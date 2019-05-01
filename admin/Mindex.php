@@ -91,64 +91,29 @@
                             <cite>开启/关闭选课</cite></a>
                     </li>
                     <li>
-                        <a href="javascript:; " onclick="xadmin.add_tab('课程管理','MSupClass.php')">
+                        <a onclick="xadmin.add_tab('课程管理','MSupClass.php')">
                             <i class="layui-icon layui-icon-template" lay-tips="课程管理"></i>
                             <!-- 课程管理,用于查询和隐藏课程 -->
-                            <cite>课程管理</cite> 
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('添加课程','MAddClass.php')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <!-- 单独页面,添加课程专用,可以试着在课程管理页面实现此功能的跳转 -->
-                                    <cite>添加课程</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('修改课程信息','member-list1.html',true)">
-                                    <!-- 对当前已存在的课程进行修改,单独设置页面,修改的后的信息异步提交到后台 -->
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>修改课程信息</cite></a>
-                            </li>
-                        </ul>
+                            <cite>课程管理</cite> </a>
                     </li>
                     <li>
-                        <a href="javascript:;">
+                        <a  onclick="xadmin.add_tab('学生管理','MSupStu.php')">
                             <i class="layui-icon layui-icon-user" lay-tips="学生管理"></i>
                             <!-- 学生管理页面,用于查询和删除学生信息 -->
-                            <cite>学生管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('添加学生','member-del.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>添加学生</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('修改学生信息','member-del.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>修改学生信息</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('学生选课管理','member-list1.html')">
-                                    <!-- 开发中 -->
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>学生选课管理</cite></a>
-                            </li>
-                        </ul>
+                            <cite>学生管理</cite></a>
                     </li>
                     <li>
-                        <a href="javascript:;">
+                        <a onclick="xadmin.add_tab('通知管理','MSupNotice.php')">
                             <i class="layui-icon layui-icon-release" lay-tips="通知管理"></i>
                             <!-- 删除和查询通知 -->
                             <!-- 增加通知设置在底下 -->
-                            <cite>通知管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
+                            <cite>通知管理</cite></a>
                     </li>
                     <li>
                         <a onclick="xadmin.add_tab('选课信息分析','cate.html')">
                         <i class="layui-icon layui-icon-engine" lay-tips="选课信息分析"></i>
                         <!-- 选课信息图表,后台数据统计后传给前台,考虑优化省掉后台机能 -->
-                            <cite>选课信息分析</cite></a>
+                        <cite>选课信息分析</cite></a>
                     </li>
                     <li>
                         <a onclick="xadmin.add_tab('学生信息分析','cate.html')">

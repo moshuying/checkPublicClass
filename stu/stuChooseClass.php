@@ -47,6 +47,6 @@
 <script src="../public/js/outInfo.js"></script>
 <script src="../public/js/stuChooseClass.js"></script>
 <script src="../public/js/publicJs/ajaxAsysc.js"></script>
-<script>window.onload = function(){AsyscNotice('./stu/ajax/ajaxteaShowNotice.php');AsyscClassCard('./stu/ajax/ajaxShowAllClass.php');  } </script>
+<script>window.onload = function(){AsyscNotice('http://data.twogether.cn/ChooseClass/stu/ajax/ajaxteaShowNotice.php');AsyscClassCard('http://data.twogether.cn/ChooseClass/stu/ajax/ajaxShowAllClass.php');  } </script>
 </body>
 </html>
