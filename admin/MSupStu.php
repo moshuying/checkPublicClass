@@ -122,7 +122,7 @@ layui.use('table', function(){
       });
     } else if(obj.event === 'edit'){
       layer.open({ 
-        title: ''+data.xingming
+        title: ''+data.xingming+" / "+data.sid
         ,type: 2
         //,skin: 'layui-layer-rim', //加上边框 
         ,area: ['80%', '80%'] //宽高 
