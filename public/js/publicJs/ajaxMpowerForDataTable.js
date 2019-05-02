@@ -1,18 +1,3 @@
-function MdownloadInfoBefore(Name){
-    var xhr = new XMLHttpRequest(),
-        url = 'http://data.twogether.cn/ChooseClass/ajax/ajaxMDownloadClassHumanBefore.php';
-    xhr.open('GET', url + "?className=" + Name, !0);
-    xhr.send();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 304)) {
-            var jsonDATA = eval(this.responseText);
-            console.log(jsonDATA[0].ID);
-			var room=jsonDATA[0].time1
-			var classRoom=room.substring(room.length-6,room.length);
-            MdownloadInfo(className,jsonDATA[0].ID,jsonDATA[0].author,jsonDATA[0].number,classRoom);
-        }
-    }
-}
 function MdownloadInfo(className,classID,author,number,classRoom) {
     var xhr = new XMLHttpRequest(),
         url = 'http://data.twogether.cn/ChooseClass/ajax/ajaxMDownloadClassHuman.php',
@@ -27,150 +12,6 @@ function MdownloadInfo(className,classID,author,number,classRoom) {
         }
     }
 
-}
-
-function downloadFile(jsonDATA, fileName, title) {
-    JSONToExcelConvertor(jsonDATA, fileName, title);
-}
-//页面加载完毕显示日志冗余数量
-function McehekLogs() {
-    var xhr = new XMLHttpRequest,
-        delet = document.getElementById('MdeletOneWeek'),
-        url = "http://data.twogether.cn/ChooseClass/ajax/ajaxMCheckLogs.php";
-    xhr.open("POST", url, !0), xhr.send(null);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && (xhr.readyState == 200 || xhr.readyState == 304)) {
-            delet.innerHTML = "删除日志成功";
-        } else {
-            delet.innerHTML = "返回码错误,请重试";
-            alert('删除日志失败,返回码错误');
-        }
-    }
-    xhr.timeout = 3000, xhr.ontimeout = function () {
-        delet.innerHTML = "请求超时...";
-        alert('删除日志请求超时,请刷新页面或重试!');
-    }
-}
-//点击清楚日志冗余
-function MdeletOneWEEK() {
-    var xhr = new XMLHttpRequest(),
-        delet = document.getElementById('MdeletOneWeek'),
-        url = "http://data.twogether.cn/ChooseClass/ajax/ajaxMdeletLogs.php";
-    xhr.open("POST", url, !0), xhr.send(null);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && (xhr.readyState == 200 || xhr.readyState == 304)) {
-            delet.innerHTML = "删除日志成功";
-        } else {
-            delet.innerHTML = "返回码错误,请重试";
-            alert('删除日志失败,返回码错误');
-        }
-    }
-    xhr.timeout = 3000, xhr.ontimeout = function () {
-        delet.innerHTML = "请求超时...";
-        alert('删除日志请求超时,请刷新页面或重试!');
-    }
-
-}
-//加载完检查是否开启选课
-function checkOpen() {
-    var beforeTouch = document.getElementById('beforeTouch');
-    var Mname = document.getElementById("checkID").innerHTML
-    var postInfo = {
-        'MID': Mname,
-        'Mname': Mname
-    };
-    var xhr = new XMLHttpRequest();
-    var url = "http://data.twogether.cn/ChooseClass/ajax/ajaxMcheckOpen.php";
-    xhr.open("GET", url + "?MID=" + Mname, !0);
-    xhr.send();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 304)) {
-            var jsonDATA = eval(this.responseText);
-            console.log(jsonDATA);
-            //结果只有0或1 0关闭 1开启
-            if (jsonDATA == '0') {
-                beforeTouch.style.background = "red";
-                beforeTouch.innerHTML = "您已关闭选课点击此按钮开启";
-                beforeTouch.onclick = function () {
-                    openChooseDo();
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 2500);
-                };
-            } else {
-                beforeTouch.style.background = "green";
-                beforeTouch.innerHTML = "您已开启选课点击此按钮关闭";
-                beforeTouch.onclick = function () {
-                    closeChooseDo();
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 2500);
-                };
-            }
-        }
-    }
-}
-
-function openChooseDo() {
-    var url2 = "http://data.twogether.cn/ChooseClass/ajax/ajaxMopenChooseDo.php";
-    var beforeTouch = document.getElementById('beforeTouch');
-    var Mname = document.getElementById("checkID").innerHTML
-    var postInfo = {
-        'MID': Mname,
-        'Mname': Mname
-    };
-    var xhr2 = new XMLHttpRequest();
-    xhr2.open("GET", url2 + "?MID=" + Mname, !0);
-    xhr2.send(postInfo);
-    console.log(postInfo);
-    xhr2.onreadystatechange = function () {
-        if (xhr2.readyState == 4 && (xhr2.status == 200 || xhr2.status == 304)) {
-            window.location.reload()
-            var jsonDATA2 = eval(this.responseText);
-            console.log(jsonDATA2);
-            //返回0则成功关闭选课
-            if (jsonDATA2 == '1') {
-                beforeTouch.innerHTML = "已成功开启选课";
-                checkOpen();
-            } else {
-                beforeTouch.innerHTML = "修改错误,请刷新重试";
-                checkOpen();
-            }
-        }
-    }
-}
-
-function closeChooseDo() {
-    var url3 = "http://data.twogether.cn/ChooseClass/ajax/ajaxMcloseChooseDo.php";
-    var beforeTouch = document.getElementById('beforeTouch');
-    var Mname = document.getElementById("checkID").innerHTML
-    var postInfo = {
-        'MID': Mname,
-        'Mname': Mname
-    };
-    var xhr3 = new XMLHttpRequest();
-    xhr3.open("GET", url3 + "?MID=" + Mname, !0);
-    xhr3.send(postInfo);
-    console.log(postInfo);
-    xhr3.onreadystatechange = function () {
-        if (xhr3.readyState == 4 && (xhr3.status == 200 || xhr3.status == 304)) {
-            window.location.reload()
-            var jsonDATA3 = eval(this.responseText);
-            console.log(jsonDATA3);
-            //返回1则成功开启选课
-            if (jsonDATA3 == '0') {
-                beforeTouch.innerHTML = "已成功关闭选课";
-                checkOpen();
-            } else {
-                beforeTouch.innerHTML = "修改错误,请刷新重试";
-                checkOpen();
-            }
-        }
-    }
-}
-
-function sleep(d) {
-    for (var t = Date.now(); Date.now() - t <= d;);
 }
 //写入excel(jsonData主体字符串,生成的文件名,主讲人,课程人数 )
 function JSONToExcelConvertor(JSONData, FileName, author,number,classRoom) {
@@ -200,10 +41,8 @@ function JSONToExcelConvertor(JSONData, FileName, author,number,classRoom) {
         var s = date.getSeconds()< 10 ? '0'+date.getSeconds() : date.getSeconds(); 
         return Y+M+D+h+m+s; } 
     var times=TimesTempToTime();
-
-    var excelFile = `<?xml version="1.0"?>
-    <?mso-application progid="Excel.Sheet"?>
-    <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+    var head='<'+'?'+'x'+'m'+'l'+' '+'version='+`"1.0"?>`+'<'+'?'+`mso-application progid="Excel.Sheet"?>`;
+    var excelFile = head+`<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
      xmlns:o="urn:schemas-microsoft-com:office:office"
      xmlns:x="urn:schemas-microsoft-com:office:excel"
      xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"

@@ -104,7 +104,7 @@ layui.use('table', function(){
           title: '添加学生信息'
           ,type: 2
           //,skin: 'layui-layer-rim', //加上边框 
-          ,area: ['80%', '80%'] //宽高 
+          ,area: ['70%', '40%'] //宽高 
           ,content: 'MAddStu.php' //弹出的页面 
           ,shadeClose: true //点击遮罩关闭 
         });
@@ -125,7 +125,7 @@ layui.use('table', function(){
         title: ''+data.xingming+" / "+data.sid
         ,type: 2
         //,skin: 'layui-layer-rim', //加上边框 
-        ,area: ['80%', '80%'] //宽高 
+        ,area: ['70%', '40%'] //宽高 
         ,content: 'MAddStu.php' //弹出的页面 
         ,shadeClose: true //点击遮罩关闭 
       });

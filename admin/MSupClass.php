@@ -21,28 +21,25 @@
     <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
 </div>
 <!-- 导航部分结束 -->
-    <table class="layui-hide" id="supClass" lay-filter="supClass" ></table>
-    <script type="text/html" id="toolBarCheck">
-        <div class="layui-btn-container">
-            <!-- 搜索课程名字 -->
-            <div class="layui-form-item">
-                <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
-                <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
-                <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
-                <button class="layui-btn layui-btn-sm" lay-event="addClass">添加课程</button>
-            </div>
-        </div>
-    </script>
-    <script type="text/html" id="toolBarDo">
-      <a class="layui-btn layui-btn-xs layui-input-inline" lay-event="datail">查看</a>
-      <a class="layui-btn layui-btn-xs layui-input-inline" lay-event="edit">编辑</a>
-      <a class="layui-btn layui-btn-xs layui-input-inline" lay-event="download">下载</a>
-      <a class="layui-btn layui-btn-danger layui-btn-xs layui-input-inline" lay-event="del">删除</a>
-    </script>
-    <script>
-layui.use('table', function(){
+  <table class="layui-hide" id="supClass" lay-filter="supClass" ></table>
+  <script type="text/html" id="toolBarCheck">
+      <div class="layui-btn-container">
+          <!-- 搜索课程名字 -->
+          <div class="layui-form-item">
+              <button class="layui-btn layui-btn-sm" lay-event="addClass">添加课程</button>
+              <button class="layui-btn layui-btn-sm" lay-event="serchClass">搜索课程</button>
+          </div>
+      </div>
+  </script>
+  <script type="text/html" id="toolBarDo">
+    <a class="layui-btn layui-btn-xs layui-input-inline" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-xs layui-input-inline" lay-event="download">下载</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs layui-input-inline" lay-event="del">删除</a>
+  </script>
+<script>
+layui.use(['table','form'], function(){
   var table = layui.table;
-  
+  var form = layui.form;   
   table.render({
     elem: '#supClass'
     ,height:600
@@ -72,7 +69,7 @@ layui.use('table', function(){
             lay-event="chengeStatus"
             lay-skin="switch"
             lay-text="开启|关闭"
-            lay-filter="isShow" onclick="test(this)" checked>`;
+            lay-filter="isShow" checked>`;
           }else{
             return `<input type="checkbox"
             name="hidden" 
@@ -81,7 +78,7 @@ layui.use('table', function(){
             lay-event="chengeStatus"
             lay-skin="switch"
             lay-text="开启|关闭"
-            lay-filter="isShow"onclick="test(this)" >`;
+            lay-filter="isShow">`;
           }
         }
 
@@ -116,17 +113,6 @@ layui.use('table', function(){
   table.on('toolbar(supClass)', function(obj){
     var checkStatus = table.checkStatus(obj.config.id);
     switch(obj.event){
-      case 'getCheckData':
-        var data = checkStatus.data;
-        layer.alert(JSON.stringify(data));
-      break;
-      case 'getCheckLength':
-        var data = checkStatus.data;
-        layer.msg('选中了：'+ data.length + ' 个');
-      break;
-      case 'isAll':
-        layer.msg(checkStatus.isAll ? '全选': '未全选');
-      break;
       case 'addClass':
         layer.open({ 
           title: '添加课程'
@@ -139,20 +125,20 @@ layui.use('table', function(){
       break;
     };
   });
-  //修改课程状态
-  table.on('tool(hidden)',function(obj){
-	  layer.msg("123");
-    console.log(data.elem); //得到checkbox原始DOM对象
-  console.log(data.elem.checked); //是否被选中，true或者false
-  console.log(data.value); //复选框value值，也可以通过data.elem.value得到
-  console.log(data.othis); //得到美化后的DOM对象
-  });
   //监听行工具事件
   table.on('tool(supClass)', function(obj){
     var data = obj.data;
     switch (obj.event){
       case 'del':
-      layer.confirm('真的删除行么', function(index){
+      layer.confirm('真的关闭课程么', function(index){  
+        var xhr =new XMLHttpRequest(),url='../ajax/ajaxMclassClose.php';
+        xhr.onreadystatechange=function(){
+          if(4==xhr.readyState&&(200==xhr.status||304==xhr.status)){
+            layer.msg("关闭成功");
+          }
+        }
+        xhr.open("get",url+"?className="+data.title,!0);
+        xhr.send();
         obj.del();
         layer.close(index);
       });
@@ -162,22 +148,24 @@ layui.use('table', function(){
           title: ''+data.title
           ,type: 2
           //,skin: 'layui-layer-rim', //加上边框 
-          ,area: ['80%', '80%'] //宽高 
+          ,area: ['70%', '80%'] //宽高 
           ,content: 'MAddClass.php' //弹出的页面 
           ,shadeClose: true //点击遮罩关闭 
         });
       break;
-      case 'datail':
-       layer.confirm(data.ID);
-      break;
-      case 'download':
-      MdownloadInfoBefor(data.title);
+      case 'download':      
+        var room=data.time1;
+        var classRoom=room.substring(room.length-6,room.length);
+        MdownloadInfo(data.title,data.ID,data.author,data.number,classRoom)
       break;
     }
   });
+  form.on('checkbox(isShow)',function(data){
+    layer.msg(data);
+  });
 });
-
-    </script>
-<script src="../public/js/publicJs/ajaxMpowerForDataTable.js"></script>    
+</script>
+<script src="../public/js/publicJs/ajaxAsysc.js"></script>
+<script src="../public/js/publicJs/ajaxMpowerForDataTable.js"></script>
 </body>
 </html>

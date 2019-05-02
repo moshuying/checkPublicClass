@@ -17,24 +17,6 @@
     <title><?php echo $_SESSION['username']; ?>的个人界面</title>
 </head>
 <body>
-<!-- 头部show -->
-<?php require "./tpl/Allheader.php" ?>
-<!-- 菜单 -->
-<nav>
-    <div id="menu_button_wrapper">
-		<div id="menu_button">
-			Menu&nbsp;&nbsp;
-			<div id="hamburger">
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-	<!-- 引入teaMenu.php老师管理页面菜单模板 -->
-	<?php require "./tpl/MMenu.php"; ?>
-</nav>
 <!-- 修改个人信息 -->
 <div class="modern-forms">
     <div class="modern-container">
@@ -80,13 +62,9 @@
         </form>    
     </div><!-- modern-container -->
 </div><!-- modern-forms -->
-<!-- 引入通知框体模板 -->
-<?php require "./tpl/allShowNotice.php"; ?>
-<!-- 引入页脚 -->
-<?php require "./tpl/allfooter.php"; ?>
 <script src="../public/js/outInfo.js"></script>
 <script src="../public/js/ourGet.js"></script>
 <script src="../public/js/publicJs/ajaxAsysc.js"></script>
-<script>window.onload = function(){ AsyscGetMenu(); AsyscNotice('http://47.107.231.9/ChooseClass/page2/ajax/ajaxteaShowNotice.php'); };  function backTeaCheckClass(){window.location.href="http://47.107.231.9/ChooseClass/page2/teaCheckClass.php";}</script>
+<script>window.onload = function(){ AsyscGetMenu(); }</script>
 </body>
 </html>
