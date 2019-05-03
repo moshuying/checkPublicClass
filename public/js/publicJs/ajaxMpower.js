@@ -76,11 +76,8 @@ function MdeletOneWEEK() {
 //加载完检查是否开启选课
 function checkOpen() {
     var beforeTouch = document.getElementById('beforeTouch');
-    var Mname = document.getElementById("checkID").innerHTML
-    var postInfo = {
-        'MID': Mname,
-        'Mname': Mname
-    };
+	var Mname = 601;
+    //var Mname = document.getElementById("checkID").innerHTML;//layUI 获取不到..
     var xhr = new XMLHttpRequest();
     var url = "http://data.twogether.cn/ChooseClass/ajax/ajaxMcheckOpen.php";
     xhr.open("GET", url + "?MID=" + Mname, !0);
@@ -91,22 +88,23 @@ function checkOpen() {
             console.log(jsonDATA);
             //结果只有0或1 0关闭 1开启
             if (jsonDATA == '0') {
-                beforeTouch.style.background = "red";
-                beforeTouch.innerHTML = "您已关闭选课点击此按钮开启";
+                beforeTouch.style.background = "#FF5722";
+                beforeTouch.innerHTML = "开启选课";
+
                 beforeTouch.onclick = function () {
                     openChooseDo();
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 2500);
+                    // setTimeout(function () {
+                    //     window.location.reload();
+                    // }, 2500);
                 };
             } else {
                 beforeTouch.style.background = "green";
-                beforeTouch.innerHTML = "您已开启选课点击此按钮关闭";
+                beforeTouch.innerHTML = "关闭选课";
                 beforeTouch.onclick = function () {
                     closeChooseDo();
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 2500);
+                    // setTimeout(function () {
+                    //     window.location.reload();
+                    // }, 2500);
                 };
             }
         }
@@ -132,7 +130,7 @@ function openChooseDo() {
             console.log(jsonDATA2);
             //返回0则成功关闭选课
             if (jsonDATA2 == '1') {
-                beforeTouch.innerHTML = "已成功开启选课";
+                beforeTouch.innerHTML = '<i class="layui-icon icon-suo1"></i>已成功开启选课';
                 checkOpen();
             } else {
                 beforeTouch.innerHTML = "修改错误,请刷新重试";

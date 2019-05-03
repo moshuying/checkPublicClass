@@ -7,13 +7,15 @@
     <script src="./js/jquery.min.js"></script>
     <link rel="stylesheet" href="./css/font.css">
     <link rel="stylesheet" href="./css/xadmin.css">
+    <link rel="stylesheet" href="../public/myIcon/mobileAone/iconfont.css">
     <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
-    
+    <script src="../public/js/publicJs/ajaxMpower.js"></script>
     <title></title>
 </head>
 <body>
+<a href="" style="display:none;" id="checkID"><?php echo $_SESSION['stuID'] ?></a>
 <div class="x-nav">
     <span class="layui-breadcrumb" style="visibility: visible;">
     <a href="#bottom" onclick="location.reload()">刷新</a>
@@ -26,8 +28,8 @@
       <div class="layui-btn-container">
           <!-- 搜索课程名字 -->
           <div class="layui-form-item">
-              <button class="layui-btn layui-btn-sm" lay-event="addClass">添加课程</button>
-              <button class="layui-btn layui-btn-sm" lay-event="serchClass">搜索课程</button>
+              <button class="layui-btn layui-btn-sm" lay-event="addClass"><i class="layui-icon layui-icon-add-1"></i>添加课程</button>
+              <button id="beforeTouch" class="layui-btn layui-btn-sm" style=" background: red none repeat scroll 0% 0%;"><i class="layui-icon layui-icon-loading-1"></i>检查选课状态中...</button>
           </div>
       </div>
   </script>
@@ -95,11 +97,12 @@ layui.use(['table','form'], function(){
       ,{field:'time3', title:'上课时间3', width:300}
       ,{field:'time4', title:'上课时间4', width:300}
       ,{field:'createtime', title:'创建时间',width:200,sort:true}
-      ,{fixed: 'right', title:'操作',toolbar: '#toolBarDo', width:230,}
+      ,{fixed: 'right', title:'操作',toolbar: '#toolBarDo', width:180,}
     ]]
     ,page: true
     ,done: function(res, curr, count) { //表格数据加载完后的事件
     //调用示例
+    checkOpen();
     layer.photos({//点击图片弹出
         photos: '.layer-photos-demo'
         //,anim: 1 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
@@ -139,8 +142,28 @@ layui.use(['table','form'], function(){
         }
         xhr.open("get",url+"?className="+data.title,!0);
         xhr.send();
-        obj.del();
-        layer.close(index);
+        //重载函数
+        var $ = layui.$, active = {
+          reload: function(){
+            var Reload = $('#titleSerch');
+            //执行重载
+            table.reload('testReload', {
+              page: {
+                curr: 1 //重新从第 1 页开始
+              }
+              ,where: {
+                key: {
+                  //id即课程名字
+                  id: Reload.val()
+                }
+              }
+            });
+          }
+        };
+        $('.demoTable .layui-btn').on('click', function(){
+          var type = $(this).data('type');
+          active[type] ? active[type].call(this) : '';
+        });
       });
       break;
       case 'edit':
