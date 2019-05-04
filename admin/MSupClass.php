@@ -23,7 +23,7 @@
     <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
 </div>
 <!-- 导航部分结束 -->
-  <table class="layui-hide" id="supClass" lay-filter="supClass" ></table>
+  <table class="layui-hide " id="supClass" lay-filter="supClass" ></table>
   <script type="text/html" id="toolBarCheck">
       <div class="layui-btn-container">
           <!-- 搜索课程名字 -->
@@ -39,6 +39,9 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs layui-input-inline" lay-event="del">删除</a>
   </script>
 <script>
+  function test(){
+    alert("测试文本");
+  }
 layui.use(['table','form'], function(){
   var table = layui.table;
   var form = layui.form;   
@@ -57,30 +60,32 @@ layui.use(['table','form'], function(){
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field:'ID', title:'ID', width:70, fixed: 'left', unresize: true, sort: true,totalRowText:"合计"}
-      ,{field:'title', title:'课程名字', width:200, edit: 'text'}
-      ,{field:'author', title:'主讲人', width:150, edit: 'text', templet: function(data){
+      ,{field:'title', title:'课程名字', width:200,}
+      ,{field:'author', title:'主讲人', width:150, templet: function(data){
         return '<em>'+ data.author +'</em>'
       }}
+      ,{field:'preparation', title:'开课前准备', width:200}
+      ,{field:'miaoshu',title:'描述',width:200}
       ,{field:'hidden',title:'开启/关闭课程',width:120,unresize:true,filter:"isShow",sort:false
         ,templet:function(data){
           if(data.hidden=="0"){
-            return `<input type="checkbox"
+            return `<div class="layui-form"><input type="checkbox"
             name="hidden" 
             id="chengeStatus"
             value="`+data.ID+`"
             lay-event="chengeStatus"
             lay-skin="switch"
             lay-text="开启|关闭"
-            lay-filter="isShow" checked>`;
+            lay-filter="isShow" checked></div>`;
           }else{
-            return `<input type="checkbox"
+            return `<div class="layui-form"><input type="checkbox"
             name="hidden" 
             id="chengeStatus"
             value="`+data.ID+`"
             lay-event="chengeStatus"
             lay-skin="switch"
             lay-text="开启|关闭"
-            lay-filter="isShow">`;
+            lay-filter="isShow"></div>`;
           }
         }
 
@@ -90,7 +95,8 @@ layui.use(['table','form'], function(){
                   <img layer-pid="`+data.logoSource+`"  layer-src="`+data.logoSource+`" src="`+data.logoSource+`" alt="`+data.title+`">
                 </div>`;
       }}
-      ,{field:'number', title:'课程人数', width:120, edit: 'text', sort: true,totalRow: true}
+      ,{field:'classHour',title:'课时',width:200}
+      ,{field:'number', title:'课程人数', width:120, sort: true,totalRow: true}
       ,{field:'selected', title:'已选人数', width:100,totalRow: true}
       ,{field:'time1', title:'上课时间1', width:300}
       ,{field:'time2', title:'上课时间2', width:300}
@@ -101,7 +107,7 @@ layui.use(['table','form'], function(){
     ]]
     ,page: true
     ,done: function(res, curr, count) { //表格数据加载完后的事件
-    //调用示例
+    //调用课程检查
     checkOpen();
     layer.photos({//点击图片弹出
         photos: '.layer-photos-demo'
@@ -122,7 +128,7 @@ layui.use(['table','form'], function(){
           ,type: 2
           //,skin: 'layui-layer-rim', //加上边框 
           ,area: ['80%', '80%'] //宽高 
-          ,content: 'MAddClass.php' //弹出的页面 
+          ,content: 'MAddClass.php'//弹出的页面 
           ,shadeClose: true //点击遮罩关闭 
         });
       break;
@@ -172,7 +178,22 @@ layui.use(['table','form'], function(){
           ,type: 2
           //,skin: 'layui-layer-rim', //加上边框 
           ,area: ['70%', '80%'] //宽高 
-          ,content: 'MAddClass.php' //弹出的页面 
+          ,content: 'MEditClass.php?title='+data.title
+                    +'&ID='+data.ID
+                    +'&author='+data.author
+                    +'&preparation='+data.preparation
+                    +'&miaoshu='+data.miaoshu 
+                    +'&number='+data.number
+                    +'&classHour='+data.classHour
+                    +'&time1='+data.time1
+                    +'&time2='+data.time2
+                    +'&time3='+data.time3
+                    +'&time4='+data.time4
+                    +'&neirong1='+data.neirong1
+                    +'&neirong2='+data.neirong2
+                    +'&neirong3='+data.neirong3
+                    +'&neirong4='+data.neirong4
+                    +'&logoSource='+data.logoSource
           ,shadeClose: true //点击遮罩关闭 
         });
       break;
@@ -184,7 +205,7 @@ layui.use(['table','form'], function(){
     }
   });
   form.on('checkbox(isShow)',function(data){
-    layer.msg(data);
+    layer.msg(data.value);
   });
 });
 </script>

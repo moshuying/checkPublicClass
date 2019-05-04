@@ -1,3 +1,4 @@
+
 function MdownloadInfoBefore(){
     var download = document.getElementsByTagName('select')[0];
     var xhr = new XMLHttpRequest(),
@@ -89,7 +90,7 @@ function checkOpen() {
             //结果只有0或1 0关闭 1开启
             if (jsonDATA == '0') {
                 beforeTouch.style.background = "#FF5722";
-                beforeTouch.innerHTML = "开启选课";
+                beforeTouch.innerHTML = '<i class="myicon icon-suo1"></i>'+"开启选课";
 
                 beforeTouch.onclick = function () {
                     openChooseDo();
@@ -99,7 +100,7 @@ function checkOpen() {
                 };
             } else {
                 beforeTouch.style.background = "green";
-                beforeTouch.innerHTML = "关闭选课";
+                beforeTouch.innerHTML = '<i class="myicon icon-suo"></i>'+"关闭选课";
                 beforeTouch.onclick = function () {
                     closeChooseDo();
                     // setTimeout(function () {
@@ -130,7 +131,7 @@ function openChooseDo() {
             console.log(jsonDATA2);
             //返回0则成功关闭选课
             if (jsonDATA2 == '1') {
-                beforeTouch.innerHTML = '<i class="layui-icon icon-suo1"></i>已成功开启选课';
+                beforeTouch.innerHTML = '已成功开启选课';
                 checkOpen();
             } else {
                 beforeTouch.innerHTML = "修改错误,请刷新重试";
