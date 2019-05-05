@@ -179,7 +179,7 @@
             form.on('submit(formDemo)', function(data){
             layer.msg(JSON.stringify(data.field));
             return false;
-        });
+        }); 
     });
 </script>
 <script src="../public/js/ourGet.js"></script>

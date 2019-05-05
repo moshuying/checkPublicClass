@@ -145,7 +145,7 @@
                             <div class="col col-6 addCLASSnone">
                                 <div class="field-group prepend-icon">
                                     <div id="divPreview"><img id="imgHeadPhoto2" onclick="$('#jumpCLICK').click();" src="../public/img/upRule.png" style="width: 100%; height: 170px; border: solid 1px #d2e2e2;bckground-size: cover;" alt="" /></div>
-                                </div>
+                                </div> 
                             </div><!-- end col-6 -->
                             <div class="col col-6">
                                 <div class="field-group prepend-icon">

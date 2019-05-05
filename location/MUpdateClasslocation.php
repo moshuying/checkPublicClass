@@ -17,7 +17,7 @@ $neirong3=isset($_POST['neirong3'])?($_POST['neirong3']):"";
 $time3=isset($_POST['time3'])?($_POST['time3']):"";
 $neirong4=isset($_POST['neirong4'])?($_POST['neirong4']):"";
 $time4=isset($_POST['time4'])?($_POST['time4']):"";
-$number=isset($_POST['number'])?($_POST['number']):"";
+$number=isset($_POST['number'])?($_POST['number']):""; 
 try {
     if(empty($title)||empty($author)||empty($miaoshu)||empty($neirong1)||empty($preparation)){
         header("Location:../admin/MAddClass.php?submit2=2");

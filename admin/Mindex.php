@@ -130,7 +130,7 @@
                         <!-- 学生不同选课图表分析,前台分析 -->
                             <cite>学生信息分析</cite></a>
                     </li>
-                    <li>
+                    <li> 
                         <a href="javascript:;">
                             <i class="iconfont left-nav-li" lay-tips="系统统计">&#xe6ce;</i>
                             <!-- 对近期日志进行统计,考虑加入到欢迎页 -->
