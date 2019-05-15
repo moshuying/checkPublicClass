@@ -10,7 +10,7 @@ if($username=="2"||empty($_SESSION['stuID'])){
     $ip = ($ip) ? $ip : $_SERVER["REMOTE_ADDR"];
     $insertSql="INSERT INTO `jumpPower`(`userID`,`ip`)VALUES ('".$_SESSION['stuID']."','".$ip."')";
     $pdo->exec($insertSql);
-    header("refresh:3;url=http://data.twogether.cn/ChooseClass/page2/connect/logOut.php?power=3");
+    header("logOut.php?power=3");
     echo '<script>alert("您没有权限访问!2秒后自动跳转");</script>'; 
 }
 ?>

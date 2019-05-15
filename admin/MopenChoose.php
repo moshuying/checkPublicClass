@@ -1,4 +1,5 @@
-<?php require "../connect/session.php"; error_reporting(E_ALL^E_NOTICE^E_WARNING); require "../connect/Mpower.php" ?>
+<?php error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+require "../connect/Mpower.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

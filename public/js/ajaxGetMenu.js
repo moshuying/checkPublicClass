@@ -4,7 +4,7 @@ var putInfo = document.getElementById("putInfo");
     //创建XHR对象
     var xhr = new XMLHttpRequest();
     //设置请求URL
-    var url = "http://data.twogether.cn/ChooseClass/admin/ajax/ajaxClassMenu.php";
+var url = "../ajax/ajaxClassMenu.php";
     //设置XHR对象readyState变化时响应函数
     xhr.onreadystatechange = function () {
         //readyState是请求的状态，为4表示请求结束

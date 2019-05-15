@@ -2,7 +2,7 @@
 function MdownloadInfoBefore(){
     var download = document.getElementsByTagName('select')[0];
     var xhr = new XMLHttpRequest(),
-        url = 'http://data.twogether.cn/ChooseClass/ajax/ajaxMDownloadClassHumanBefore.php',
+        url = '../ajax/ajaxMDownloadClassHumanBefore.php',
         className = download.value;
     xhr.open('GET', url + "?className=" + className, !0);
     xhr.send();
@@ -18,7 +18,7 @@ function MdownloadInfoBefore(){
 }
 function MdownloadInfo(className,classID,author,number,classRoom) {
     var xhr = new XMLHttpRequest(),
-        url = 'http://data.twogether.cn/ChooseClass/ajax/ajaxMDownloadClassHuman.php',
+        url = '../ajax/ajaxMDownloadClassHuman.php',
         fileName = className + "学生信息";
     xhr.open('GET', url + "?classID=" + classID, !0);
     xhr.send();
@@ -39,7 +39,7 @@ function downloadFile(jsonDATA, fileName, title) {
 function McehekLogs() {
     var xhr = new XMLHttpRequest,
         delet = document.getElementById('MdeletOneWeek'),
-        url = "http://data.twogether.cn/ChooseClass/ajax/ajaxMCheckLogs.php";
+        url = "../ajax/ajaxMCheckLogs.php";
     xhr.open("POST", url, !0), xhr.send(null);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && (xhr.readyState == 200 || xhr.readyState == 304)) {
@@ -58,7 +58,7 @@ function McehekLogs() {
 function MdeletOneWEEK() {
     var xhr = new XMLHttpRequest(),
         delet = document.getElementById('MdeletOneWeek'),
-        url = "http://data.twogether.cn/ChooseClass/ajax/ajaxMdeletLogs.php";
+        url = "../ajax/ajaxMdeletLogs.php";
     xhr.open("POST", url, !0), xhr.send(null);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && (xhr.readyState == 200 || xhr.readyState == 304)) {
@@ -80,7 +80,7 @@ function checkOpen() {
 	var Mname = 601;
     //var Mname = document.getElementById("checkID").innerHTML;//layUI 获取不到..
     var xhr = new XMLHttpRequest();
-    var url = "http://data.twogether.cn/ChooseClass/ajax/ajaxMcheckOpen.php";
+    var url = "../ajax/ajaxMcheckOpen.php";
     xhr.open("GET", url + "?MID=" + Mname, !0);
     xhr.send();
     xhr.onreadystatechange = function () {
@@ -113,7 +113,7 @@ function checkOpen() {
 }
 
 function openChooseDo() {
-    var url2 = "http://data.twogether.cn/ChooseClass/ajax/ajaxMopenChooseDo.php";
+    var url2 = "../ajax/ajaxMopenChooseDo.php";
     var beforeTouch = document.getElementById('beforeTouch');
     var Mname = document.getElementById("checkID").innerHTML
     var postInfo = {
@@ -142,7 +142,7 @@ function openChooseDo() {
 }
 
 function closeChooseDo() {
-    var url3 = "http://data.twogether.cn/ChooseClass/ajax/ajaxMcloseChooseDo.php";
+    var url3 = "../ajax/ajaxMcloseChooseDo.php";
     var beforeTouch = document.getElementById('beforeTouch');
     var Mname = document.getElementById("checkID").innerHTML
     var postInfo = {

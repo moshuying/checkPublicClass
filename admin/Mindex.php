@@ -1,5 +1,7 @@
 <!doctype html>
-<?php require "../connect/session.php"; require "../connect/Mpower.php" ?>
+<?php require "../connect/session.php";
+error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+require "../connect/Mpower.php" ?>
 <html class="x-admin-sm">
 <head>
     <meta charset="UTF-8">
@@ -29,7 +31,7 @@
         <!-- 顶部开始 -->
         <div class="container">
             <div class="logo">
-                <a href="./index.html">公开课选课系统后台</a></div>
+                <a href="Mindex.php">公开课选课系统后台</a></div>
             <div class="left_open">
                 <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
             </div>
@@ -56,7 +58,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-hide-xs" lay-unselect="">
-                    <a href="http://data.twogether.cn/ChooseClass/login.php" target="_blank" title="前台">
+                    <a href="Mindex.php" target="_blank" title="前台">
                     <i class="layui-icon layui-icon-website"></i>
                     </a>
                 </li>
@@ -72,13 +74,13 @@
                         <dd>
                             <a onclick="xadmin.open('个人信息','MshowInof.php')">个人信息</a></dd>
                         <dd>
-                            <a onclick="xadmin.open('切换帐号','./connect/logOut.php')">切换帐号</a></dd>
+                            <a onclick="xadmin.open('切换帐号','../connect/logOut.php')">切换帐号</a></dd>
                         <dd>
-                            <a href="./connect/logOut.php">退出</a></dd>
+                            <a href="../connect/logOut.php">退出</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item to-index">
-                    <a href="/">前台首页</a></li>
+                    <a href="Mindex.php">前台首页</a></li>
             </ul>
         </div>
         <!-- 顶部结束 -->

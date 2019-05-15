@@ -1,7 +1,7 @@
 function MdownloadInfoBeforeOld(){
     var download = document.getElementsByTagName('select')[0];
     var xhr = new XMLHttpRequest(),
-        url = 'http://data.twogether.cn/ChooseClass/ajax/ajaxMDownloadClassHumanBefore.php',
+        url = '../ajax/ajaxMDownloadClassHumanBefore.php',
         className = download.value;
     xhr.open('GET', url + "?className=" + className, !0);
     xhr.send();
@@ -15,7 +15,7 @@ function MdownloadInfoBeforeOld(){
 }
 function MdownloadInfoOld(className,classID,author,number) {
     var xhr = new XMLHttpRequest(),
-        url = 'http://data.twogether.cn/ChooseClass/ajax/ajaxMDownloadClassHuman.php',
+        url = '../ajax/ajaxMDownloadClassHuman.php',
         fileName = className + "学生信息";
     xhr.open('GET', url + "?classID=" + classID, !0);
     xhr.send();

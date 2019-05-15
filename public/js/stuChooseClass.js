@@ -1,5 +1,5 @@
 function signIn(title) {
-    var url = "http://data.twogether.cn/ChooseClass/page2/ajax/ajaxstuChooseClass.php";
+    var url = "../ajax/ajaxstuChooseClass.php";
     var classname = title.innerHTML,
         stuID = stuname = document.getElementsByTagName('a')[0].innerHTML,
         stuname = document.getElementsByTagName('p')[0].innerHTML,

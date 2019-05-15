@@ -18,6 +18,6 @@ unset($_SESSION['stuID']);
 $pdo=null;
 session_destroy();
 $power=isset($_GET['power'])?$_GET['power']:"";
-header("Location:../../login.php?err=".$power);
+header("Location:../../?err=" . $power);
 
 ?>

@@ -1,6 +1,6 @@
 function MdownloadInfo(className,classID,author,number,classRoom) {
     var xhr = new XMLHttpRequest(),
-        url = 'http://data.twogether.cn/ChooseClass/ajax/ajaxMDownloadClassHuman.php',
+        url = '../ajax/ajaxMDownloadClassHuman.php',
         fileName = className + "学生信息";
     xhr.open('GET', url + "?classID=" + classID, !0);
     xhr.send();

@@ -65,12 +65,12 @@ function AsyscClassCard(url) {
             ShowClassCard[0].innerHTML = '<p style="font-size:2rem;text-align:center;">您尚未选择任何课程<br>点击<a style="color:red;font-size: inherit;" href="./stuChooseClass.php">进入选课</a>加入自己喜欢的课程吧</p>';
             alert("您尚未选择任何课程");
           }
-          for (var ix in (console.log(jsonDATA), jsonDATA)) {
+            for (var ix in jsonDATA) {
 			  
             if (jsonDATA[ix].hidden == '1') continue;
 			
             var ShowHeat = jsonDATA[ix].selected + 20 + jsonDATA[ix].clickOn + 10,
-              timestr = '<span>' + jsonDATA[ix].time1.slice(5) + '</span><span>' + jsonDATA[ix].time2.slice(5) + '</span></br>' + '<span>' + jsonDATA[ix].time3.slice(5) + '</span><span>' + jsonDATA[ix].time4.slice(5) + '</span>',
+                timestr = '<span>' + jsonDATA[ix].time1 + '</span><span>' + jsonDATA[ix].time2 + '</span></br>' + '<span>' + jsonDATA[ix].time3 + '</span><span>' + jsonDATA[ix].time4 + '</span>',
               ShowClassCardAutoStr =
               '<div class="recipe-card"><aside><div style="background-image:url(' +
               jsonDATA[ix].logoSource +
@@ -109,7 +109,7 @@ function AsyscGetMenu() {
   //创建XHR对象
   var xhr = new XMLHttpRequest();
   //设置请求URL
-  var url = "http://data.twogether.cn/ChooseClass/ajax/ajaxClassMenu.php";
+    var url = "../ajax/ajaxClassMenu.php";
   //设置XHR对象readyState变化时响应函数
   xhr.onreadystatechange = function () {
     //readyState是请求的状态，为4表示请求结束
