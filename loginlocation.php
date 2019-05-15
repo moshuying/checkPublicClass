@@ -44,7 +44,7 @@ try{
                 $sql_logs = "INSERT INTO Logs(username,ip,Info) VALUES('$username','$ip','$info')";
                 $pdo -> exec($sql_logs);
                 usleep(500);//页面跳转太快,会出现数据还未写完页面已经发生跳转,暂停0.5秒等到数据写完再进行下一步操作
-                header("Location:./stu/stuCheckClass.php");
+                header("Location:./stu/stuIndex.php");
             }else {
             //用户名或密码错误，赋值err为1
             header("Location:./login.php?err=1");

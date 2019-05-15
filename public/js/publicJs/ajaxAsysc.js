@@ -66,9 +66,7 @@ function AsyscClassCard(url) {
             alert("您尚未选择任何课程");
           }
             for (var ix in jsonDATA) {
-			  
             if (jsonDATA[ix].hidden == '1') continue;
-			
             var ShowHeat = jsonDATA[ix].selected + 20 + jsonDATA[ix].clickOn + 10,
                 timestr = '<span>' + jsonDATA[ix].time1 + '</span><span>' + jsonDATA[ix].time2 + '</span></br>' + '<span>' + jsonDATA[ix].time3 + '</span><span>' + jsonDATA[ix].time4 + '</span>',
               ShowClassCardAutoStr =
