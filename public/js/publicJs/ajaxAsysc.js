@@ -1,5 +1,5 @@
 ﻿function AsyscNotice(url) {
-  var putNotice = document.getElementById("putNotice"),
+  var putNotice,
     xhr = new XMLHttpRequest();
   (xhr.onreadystatechange = function () {
     switch (xhr.readyState) {

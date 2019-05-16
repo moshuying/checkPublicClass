@@ -94,6 +94,11 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING); ?>
                     <!-- 展示欢迎页,默认不可关闭 -->
                     <cite>查看已选课程</cite></a>
             </li>
+            <li>
+                <a onclick="xadmin.add_tab('进入选课','stuChooseClass.php')">
+                    <i class="layui-icon layui-icon-home" lay-tips="进入选课"></i>
+                    <cite>进入选课</cite></a>
+            </li>
         </ul>
     </div>
 </div>

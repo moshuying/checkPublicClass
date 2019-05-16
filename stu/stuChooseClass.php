@@ -17,11 +17,14 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING); ?>
     <link rel="stylesheet" href="./css/font.css">
     <link rel="stylesheet" href="./css/xadmin.css">
     <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    <script src="./js/jquery.min.js"></script>
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
     <title><?php echo $_SESSION['username']; ?>的个人界面</title>
 </head>
 <body style="background-color:#f1f1f1;">
+<a id="getnameDo" style="display:none"><?php echo $_SESSION['stuID']; ?></a>
+<p id="getIdDo" style="display:none"><?php echo $_SESSION['stuID']; ?></p>
 <div class="x-nav">
     <span class="layui-breadcrumb" style="visibility: visible;">
     <a href="#">返回顶部</a><span lay-separator="">/</span>
@@ -58,32 +61,7 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING); ?>
     </div>
 </div>
 <div id="bottom"></div>
-<script src="../public/js/publicJs/ajaxAsysc.js"></script>
-<script>window.onload = function(){
-    AsyscClassCard('../ajax/ajaxStuShowClassCard.php');
-
-    var xhr=new XMLHttpRequest(),url="../ajax/ajaxStuShowNotice.php";
-        xhr.onreadystatechange = function () {
-          if(xhr.readyState==4&&(200==xhr.status||304==xhr.status)){
-              var JSONData = eval(this.responseText),temp="";
-              for (var ix in JSONData) {
-                  var NoticeStr =
-                      '<p class="classNameForOutPut"><a>' +
-                      JSONData[ix].className +
-                      '</a></p><p class="classNameForOutPutClassInfo"><a>' + JSONData[ix].updateName + '</a>' +
-                      JSONData[ix].info +
-                      "</p></br>";
-                  temp += NoticeStr;
-              }
-
-              layer.alert(temp,{
-                  skin:'layui-layer-molv'
-                  ,closeBtn:0
-              });
-          }
-        };
-        xhr.open("post",url,!0);
-        xhr.send(null);
-} </script>
+<script src="../public/js/stuChooseClass.js"></script>
+<script>window.onload = function(){AsyscChoose('../ajax/ajaxShowAllClass.php'); } </script>
 </body>
 </html>

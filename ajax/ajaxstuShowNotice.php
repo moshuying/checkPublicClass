@@ -1,7 +1,7 @@
 <?php
 include "../connect/session.php";
 require "../connect/PDOconn.php";
-
+error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 $username=$_SESSION['username'];
 $classIDSql="SELECT xuankeID FROM studentxk WHERE xingming='".$username."'";
 $classIDQuery=$pdo->query($classIDSql);

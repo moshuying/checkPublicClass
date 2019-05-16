@@ -2,6 +2,7 @@
 include "../connect/session.php";
 require "../connect/PDOconn.php";
 header("Content-type:text/html;charset=utf-8");
+error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 $stuID=isset($_POST['stuID'])?$_POST['stuID']:"";
 $stuname=isset($_POST['stuname'])?$_POST['stuname']:"";
 $classname=isset($_POST['classname'])?$_POST['classname']:"";
