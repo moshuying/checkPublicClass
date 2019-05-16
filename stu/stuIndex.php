@@ -71,7 +71,7 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING); ?>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
-                    <a onclick="xadmin.open('个人信息','MshowInof.php')">个人信息</a></dd>
+                    <a onclick="xadmin.open('个人信息','studEdit.php')">个人信息</a></dd>
                 <dd>
                     <a onclick="xadmin.open('切换帐号','../connect/logOut.php')">切换帐号</a></dd>
                 <dd>
