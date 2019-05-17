@@ -36,27 +36,7 @@ require "../connect/Mpower.php" ?>
                 <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
             </div>
             <ul class="layui-nav left fast-add" lay-filter="">
-                <li class="layui-nav-item">
-                    <a href="javascript:;">+新增</a>
-                    <dl class="layui-nav-child">
-                        <!-- 二级菜单 -->
-                        <dd>
-                            <a onclick="xadmin.open('最大化','http://www.baidu.com','','',true)">
-                                <i class="iconfont">&#xe6a2;</i>弹出最大化</a></dd>
-                        <dd>
-                            <a onclick="xadmin.open('弹出自动宽高','http://www.baidu.com')">
-                                <i class="iconfont">&#xe6a8;</i>弹出自动宽高</a></dd>
-                        <dd>
-                            <a onclick="xadmin.open('弹出指定宽高','http://www.baidu.com',500,300)">
-                                <i class="iconfont">&#xe6a8;</i>弹出指定宽高</a></dd>
-                        <dd>
-                            <a onclick="xadmin.add_tab('在tab打开','member-list.html')">
-                                <i class="iconfont">&#xe6b8;</i>在tab打开</a></dd>
-                        <dd>
-                            <a onclick="xadmin.add_tab('在tab打开刷新','member-del.html',true)">
-                                <i class="iconfont">&#xe6b8;</i>在tab打开刷新</a></dd>
-                    </dl>
-                </li>
+
                 <li class="layui-nav-item layui-hide-xs" lay-unselect="">
                     <a href="Mindex.php" target="_blank" title="前台">
                     <i class="layui-icon layui-icon-website"></i>
@@ -80,7 +60,7 @@ require "../connect/Mpower.php" ?>
                     </dl>
                 </li>
                 <li class="layui-nav-item to-index">
-                    <a href="Mindex.php">前台首页</a></li>
+                    <a href="../connect/logOut.php">前台首页</a></li>
             </ul>
         </div>
         <!-- 顶部结束 -->
@@ -121,96 +101,9 @@ require "../connect/Mpower.php" ?>
                             <cite>通知管理</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('选课信息分析','cate.html')">
-                        <i class="layui-icon layui-icon-engine" lay-tips="选课信息分析"></i>
-                        <!-- 选课信息图表,后台数据统计后传给前台,考虑优化省掉后台机能 -->
-                        <cite>选课信息分析</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('学生信息分析','cate.html')">
-                        <i class="layui-icon layui-icon-set-sm" lay-tips="选课信息分析"></i>
-                        <!-- 学生不同选课图表分析,前台分析 -->
-                            <cite>学生信息分析</cite></a>
-                    </li>
-                    <li> 
-                        <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="系统统计">&#xe6ce;</i>
-                            <!-- 对近期日志进行统计,考虑加入到欢迎页 -->
-                            <cite>其他功能</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('拆线图','echarts1.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>拆线图</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('拆线图','echarts2.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>拆线图</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('地图','echarts3.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>地图</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('饼图','echarts4.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>饼图</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('雷达图','echarts5.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>雷达图</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('k线图','echarts6.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>k线图</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('热力图','echarts7.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>热力图</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('仪表图','echarts8.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>仪表图</cite></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="图标字体">&#xe6b4;</i>
-                            <cite>图标字体</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('图标对应字体','unicode.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>图标对应字体</cite></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="其它页面">&#xe6b4;</i>
-                            <cite>其它页面</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('示例页面','demo.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>帮助文档</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('更新日志','log.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>更新日志</cite></a>
-                            </li>
-                        </ul>
+                        <a onclick="xadmin.add_tab('个人信息','MshowInof.php')">
+                            <i class="layui-icon layui-icon-username" lay-tips="个人信息"></i>
+                            <cite>个人信息</cite></a>
                     </li>
                 </ul>
             </div>

@@ -1,4 +1,4 @@
-function AsyscChoose(url) {
+function AsyscQuitClass(url) {
     var ShowClassCard = document.getElementsByClassName("ShowClassCard"),
         xhr = new XMLHttpRequest();
     (xhr.onreadystatechange = function () {
@@ -30,7 +30,7 @@ function AsyscChoose(url) {
                             ShowClassCardAutoStr =
                                 '<div class="recipe-card"><aside><div style="background-image:url(' +
                                 jsonDATA[ix].logoSource +
-                                ');height: 200px;background-size: cover;"></div><p style="cursor: pointer;background:url(\'../public/img/choose.png\') no-repeat ;" onclick="$(\'#jumpClick' + ix + '\').click();" class="button"></p></aside><article><h2 id="jumpClick' + ix + '" onclick="signIn(this)">' +
+                                ');height: 200px;background-size: cover;"></div><p style="cursor: pointer;background:url(\'../public/img/quitClass.png\') no-repeat ;" onclick="$(\'#jumpClick' + ix + '\').click();" class="button"></p></aside><article><h2 id="jumpClick' + ix + '" onclick="quitClass(this,'+jsonDATA[ix].ID+')">' +
                                 jsonDATA[ix].title +
                                 '</h2><ul><li><span class="icon icon-users"></span><span>' +
                                 jsonDATA[ix].author +
@@ -57,61 +57,15 @@ function AsyscChoose(url) {
         xhr.open("post", url, !0),
         xhr.send(null);
 }
-
-function signIn(title) {
-    var temp='您确定要加入'+title.innerHTML+'课程么';
-    layer.confirm(temp,{
-        btn:['确定','取消']
-    },function () {
-        var url = "../ajax/ajaxstuChooseClass.php";
-        var classname = title.innerHTML,
-            stuID = document.getElementById('getIdDo').innerHTML,
-            stuname = document.getElementById('getnameDo').innerHTML,
-            xhr = new XMLHttpRequest();
-        var postInfo = "stuname=" + stuname + "&classname=" + classname + "&stuID=" + stuID;
-        xhr.open("POST", url, !0);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send(postInfo);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 304)) {
-                var jsonDATA = this.responseText;
-                console.log(jsonDATA);
-                switch (jsonDATA) {
-                    case '1':
-                        alert(stuname + "加入" + classname + "成功!");
-                        break;
-                    case '2':
-                        alert("当前选课" + classname + "人数已满");
-                        break;
-                    case '3':
-                        alert("管理员未开放选课");
-                        break;
-                    case '4':
-                        alert("您已加入此课程" + classname);
-                        break;
-                    case '6':
-                        console.log("添加课程人数失败");
-                        alert("加入课程错误,若多次出现此错误请联系管理员");
-                        break;
-                    case '7':
-                        console.log("添加课程号失败");
-                        alert("加入课程错误,若多次出现此错误请联系管理员");
-                        break;
-                    default:
-                        alert("加入课程错误,若多次出现此错误请联系管理员");
-                        break;
-                }
-
-            }
-        }, xhr.timeout = 10000,
-            xhr.ontimeout = function () {
-                alert("连接超时,请刷重试或刷新页面.");
-            };
-    },function () {
-        layer.msg('取消操作', {
-        time: 1000
-        })
-    })
-
-
+function quitClass(el,ID) {
+    var stuID=document.getElementById('checkID').innerHTML;
+    var xhr =new XMLHttpRequest();
+    xhr.onreadystatechange=function () {
+        if (xhr.readyState==4&&(xhr.status==200||xhr.status==304)){
+            layer.alert('退出课程成功!');
+            window.location.reload()
+        }
+    }
+    xhr.open("GET","../ajax/ajaxStuQuitClass.php?stuID="+stuID+"&ID="+ID,!0);
+    xhr.send();
 }

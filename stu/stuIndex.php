@@ -35,27 +35,7 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING); ?>
         <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
     </div>
     <ul class="layui-nav left fast-add" lay-filter="">
-        <li class="layui-nav-item">
-            <a href="javascript:;">+新增</a>
-            <dl class="layui-nav-child">
-                <!-- 二级菜单 -->
-                <dd>
-                    <a onclick="xadmin.open('最大化','http://www.baidu.com','','',true)">
-                        <i class="iconfont">&#xe6a2;</i>弹出最大化</a></dd>
-                <dd>
-                    <a onclick="xadmin.open('弹出自动宽高','http://www.baidu.com')">
-                        <i class="iconfont">&#xe6a8;</i>弹出自动宽高</a></dd>
-                <dd>
-                    <a onclick="xadmin.open('弹出指定宽高','http://www.baidu.com',500,300)">
-                        <i class="iconfont">&#xe6a8;</i>弹出指定宽高</a></dd>
-                <dd>
-                    <a onclick="xadmin.add_tab('在tab打开','member-list.html')">
-                        <i class="iconfont">&#xe6b8;</i>在tab打开</a></dd>
-                <dd>
-                    <a onclick="xadmin.add_tab('在tab打开刷新','member-del.html',true)">
-                        <i class="iconfont">&#xe6b8;</i>在tab打开刷新</a></dd>
-            </dl>
-        </li>
+
         <li class="layui-nav-item layui-hide-xs" lay-unselect="">
             <a href="Mindex.php" target="_blank" title="前台">
                 <i class="layui-icon layui-icon-website"></i>
@@ -92,12 +72,20 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING); ?>
                 <a onclick="xadmin.add_tab('查看已选课程','stuWelcome.php')">
                     <i class="layui-icon layui-icon-home" lay-tips="首页"></i>
                     <!-- 展示欢迎页,默认不可关闭 -->
-                    <cite>查看已选课程</cite></a>
+                    <cite>查看已选课程</cite>
+                </a>
             </li>
             <li>
                 <a onclick="xadmin.add_tab('进入选课','stuChooseClass.php')">
-                    <i class="layui-icon layui-icon-home" lay-tips="进入选课"></i>
-                    <cite>进入选课</cite></a>
+                    <i class="layui-icon layui-icon-app" lay-tips="进入选课"></i>
+                    <cite>进入选课</cite>
+                </a>
+            </li>
+            <li>
+                <a onclick="xadmin.add_tab('个人信息','studEdit.php')">
+                    <i class="layui-icon layui-icon-username" lay-tips="个人信息"></i>
+                    <cite>个人信息</cite>
+                </a>
             </li>
         </ul>
     </div>

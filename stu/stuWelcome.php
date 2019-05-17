@@ -22,6 +22,7 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING); ?>
     <title><?php echo $_SESSION['username']; ?>的个人界面</title>
 </head>
 <body style="background-color:#f1f1f1;">
+<a href="" style="display:none;" id="checkID"><?php echo $_SESSION['stuID'] ?></a>
 <div class="x-nav">
     <span class="layui-breadcrumb" style="visibility: visible;">
     <a href="#">返回顶部</a><span lay-separator="">/</span>
@@ -58,9 +59,9 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING); ?>
     </div>
 </div>
 <div id="bottom"></div>
-<script src="../public/js/publicJs/ajaxAsysc.js"></script>
+<script src="../public/js/publicJs/quitClass.js"></script>
 <script>window.onload = function(){
-    AsyscClassCard('../ajax/ajaxStuShowClassCard.php');
+    AsyscQuitClass('../ajax/ajaxStuShowClassCard.php');
 
     var xhr=new XMLHttpRequest(),url="../ajax/ajaxStuShowNotice.php";
         xhr.onreadystatechange = function () {
@@ -68,18 +69,23 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING); ?>
               var JSONData = eval(this.responseText),temp="";
               for (var ix in JSONData) {
                   var NoticeStr =
-                      '<p class="classNameForOutPut"><a>' +
+                      '<span style=\"width: 90%;\"><p class=\"classNameForOutPut\"><a>' +
                       JSONData[ix].className +
                       '</a></p><p class="classNameForOutPutClassInfo"><a>' + JSONData[ix].updateName + '</a>' +
                       JSONData[ix].info +
-                      "</p></br>";
+                      "</p><span></br>";
                   temp += NoticeStr;
               }
-
-              layer.alert(temp,{
-                  skin:'layui-layer-molv'
-                  ,closeBtn:0
+              layer.open({
+                  type: 1 //Page层类型
+                  ,area: ['500px', '300px']
+                  ,title: '退出课程'
+                  ,shade: 0.0
+                  ,maxmin: true
+                  ,anim: 1
+                  ,content: '<div style="width:90%;height:100%; margin: auto;" '+temp+'<div>'
               });
+
           }
         };
         xhr.open("post",url,!0);
